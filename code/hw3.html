@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      // componente react
+      const element = (<h1>Hello, world with JSX!</h1>);
+      const element2 = () => (<h1>Hello, world with JSX (2)!</h1>);
+      const Element = () => (<h1>Hello, world with JSX (3)!</h1>);
+      const Element2 = (props) => (<h1>Hello, world with JSX ({props.ordem})!</h1>);
+      const Element3 = () => (<Element2 ordem={5} />);
+      //
+      ReactDOM.render(
+        <Element3 />,
+        document.getElementById('root')
+      );
+    </script>
+  </body>
+</html>

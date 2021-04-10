@@ -1,0 +1,678 @@
+ReactNative
+Programação para dispositivos móveis usando React
+09:00 10 Apr 2021
+Tags: mobile, react-native, react
+
+Autor Ari Garcia
+aristofanio@hotmail.com
+https://www.linkedin.com/in/aristofanio
+
+# ---------------------------------------------------
+# slide 2
+# ---------------------------------------------------
+* Sobre o Autor
+
+*Formação*
+- Engenheiro do Produção, 
+- Especialista em Engenharia de Software
+- Mestre em Engenharia de Software e
+- Doutorando em Engenharia de Software para Big Data
+
+*IFPB*
+- Professor de Computação Distribuída e Segurança de Dados
+- Pesquisador na área de Engenharia de Software e Aprendizado de Máquina
+
+*Experiências*
+- Migração de sistemas legado para microserviços
+- Restruturação de infraestrutura de servidores
+- Desenvolvimento de aplicativos para smartphone
+- Desenvolvimento de ferramentas para aplicações inteligentes
+
+# ---------------------------------------------------
+# slide 3
+# ---------------------------------------------------
+* Agenda
+- A evolução da web como software (10min)
+- Sobre React Framework (10min)
+- Desenvolvimento baseado em Componentes (30min)
+- Programação para React (~2h)
+- React para Mobile (20min)
+- Instalação do ReactNative (30min)
+- Visão Geral sobre ReactNative (2h30min)
+- Primeiro App (1h)
+
+# ---------------------------------------------------
+# slide 4
+# ---------------------------------------------------
+* Software para Web
+
+# ---------------------------------------------------
+# slide 5
+# ---------------------------------------------------
+* Web nos anos 90
+
+.image ./res/web-2000.jpg _ 450
+
+- mais dados e iteração baseada em navegação
+- maior preocução com carga de conteúdos
+- estilização predominante sobre layout e textos
+
+# ---------------------------------------------------
+# slide 5
+# ---------------------------------------------------
+* Web em 2010:
+
+.image ./res/web-2010.png _ 450
+
+- maior organização sobre os dados
+- navegação mais intuitiva
+- estilização sobre todos os elementos
+- início do uso de aplicações web
+
+# ---------------------------------------------------
+# slide 6
+# ---------------------------------------------------
+* Web em 2021:
+
+.image ./res/web-2021.png _ 450
+
+- UX é tão importante quanto UI
+- aplicação de princípios de design e de interação
+- preocupação com performance de interfaces
+- maior feedback para usuários 
+- focado em aplicativos
+
+# ---------------------------------------------------
+# slide 7
+# ---------------------------------------------------
+* Requisitos atuais de aplicativos web/mobile:
+
+- efeitos visuais para promover microfeedback
+- layout e comportamentos ajustáveis
+- sincronização de dados ou invés de requisições constantes
+- possibilidade de interações com microelementos
+
+.image ./res/echart.gif _ 500 
+
+# ---------------------------------------------------
+# slide 8
+# ---------------------------------------------------
+* Algumas perguntas:
+
+- como desenvolver interfaces que possam apresentar e gerar dados, comportamentos, interações e feedbacks?
+- o design para web não requer mais técnicas de web design?
+- o desenvolvimento para web tornou-se um produto separado do servidor?
+- com tantos requisitos não funcionais imperando nas aplicações web, qual a melhor maneira de desenvolver aplicações para este ambiente?
+
+.image ./res/internet-of-things.png _ 350 
+
+# ---------------------------------------------------
+# slide 9
+# ---------------------------------------------------
+* Alguns frameworks web:
+
+.image ./res/frameworks.jpeg _ 850 
+
+# ---------------------------------------------------
+# slide 10
+# ---------------------------------------------------
+* React Framework
+
+# ---------------------------------------------------
+# slide 11
+# ---------------------------------------------------
+* React Framework #1/6
+
+É um framework utilizado para criar componentes visuais de
+forma declarativa.
+
+O react se preocupa em como fazer e o desenvolvedor diz
+o que deseja do componente.
+
+"Torna fácil criar interfaces de usuário interativas"
+(fonte: https://reactjs.org)
+
+.image ./res/react-logo.svg _ 450
+
+
+# ---------------------------------------------------
+# slide 12
+# ---------------------------------------------------
+* React Framework #2/6
+
+Os componentes criados gerenciam seu próprio estado
+e podem ser usados para compor outros componentes mais
+mais complexos.
+
+É possível utilizar o princípio de "dividir para conquistar"
+na construção de interfaces complexas.
+
+A lógica dos componentes são escritas em JavaScript.
+
+Dados podem ser passados através das propriedades dos
+componentes tornando possível manter o estado fora do DOM.
+
+# ---------------------------------------------------
+# slide 13
+# ---------------------------------------------------
+* React Framework #3/6
+
+- React é agnóstico ao restante da stack de desenvolvimento, logo pode ser usado em conjunto com qualquer outra tecnologia.
+
+.image ./res/ssr.png _ 500
+
+- React pode ser renderizado tanto do lado do cliente (client-side) como do lado do servidor (server-side).
+
+
+# ---------------------------------------------------
+# slide 14
+# ---------------------------------------------------
+* React Framework #4/6
+
+Client-side vs Server-side:
+
+.image ./res/ssr2.gif _ 650
+
+Para saber mais:
+- https://www.digitalocean.com/community/tutorials/react-server-side-rendering
+- https://arkwright.github.io/scaling-react-server-side-rendering.html
+
+
+# ---------------------------------------------------
+# slide 15
+# ---------------------------------------------------
+* React Framework #5/6
+
+Um componente React é criado e renderizado originalmente sobre elementos DOM.
+
+  <!-- local onde será adicionado o componente raiz do React --> 
+  <div id="root"></div>
+  <!-- código React para renderizar um componente -->
+  <script type="text/babel">
+
+    ReactDOM.render(
+      <h1>Hello, world!</h1>,
+      document.getElementById('root')
+    );
+  
+  </script>
+
+Resultado: 
+
+.iframe code/hw.html
+
+
+# ---------------------------------------------------
+# slide 16
+# ---------------------------------------------------
+* React Framework #6/6
+
+Para facilitar a produção de componentes visuais em React deve-se utilizar JSX.
+
+JSX é uma sintaxe de programação para escrever tags HTML dentro de variáveis.
+
+  const element = <h1>Hello, world!</h1>;
+
+Dessa forma é possível reescrever o código anterior da seguinte maneira:
+
+  //const element = React.createElement('h1', null, 'Hello, world without JSX!');
+  const element = <h1>Hello, world with JSX!</h1>;
+  ReactDOM.render(
+    element,
+    document.getElementById('root')
+  );
+
+Resultado: 
+
+.iframe code/hw3.html
+
+
+# ---------------------------------------------------
+# slide 17
+# ---------------------------------------------------
+* Desenvolvimento baseado em Componentes
+
+# ---------------------------------------------------
+# slide 18
+# ---------------------------------------------------
+* Limitações e Premissas
+
+- Os conceitos apresentados aqui são direcionado para UI, mas não limitados a ele;
+- Será considerado um componente qualquer elemento visual que possa ser reusado;
+- Elementos visuais que possuam comunicação com o servidor serão chamados de componentes contextuais;
+- Elementos visuais que limitados a construir uma organização da interface para acomodar outros componentes serão chamados de componentes de layout;
+- Elementos não visuais responsáveis por apenas possibilitar organizar os demais em páginas serão chamados de componentes de roteamento;
+- Não será usado outro framework neste estudo que não o React, apesar de possível.
+
+# ---------------------------------------------------
+# slide 19
+# ---------------------------------------------------
+* Componentes visuais #1/3
+
+.image ./res/comps.png _ 750
+
+
+# ---------------------------------------------------
+# slide 20
+# ---------------------------------------------------
+* Componentes visuais #2/3
+
+Composição de componentes visuais:
+
+.image ./res/comps2.jpg _ 750
+
+
+# ---------------------------------------------------
+# slide 21
+# ---------------------------------------------------
+* Componentes visuais #3/3
+
+Componentes visuais que comunicam-se sozinhos com os servidores:
+
+.image ./res/comps3.gif _ 750
+
+Fonte: https://github.com/devarthurribeiro/react-via-cep
+
+
+# ---------------------------------------------------
+# slide 22
+# ---------------------------------------------------
+* Criando UI a partir de componentes #1/3
+
+Antes de continuar, uma pergunta:
+
+.html q1.html
+
+.image ./res/como-assim.gif 300 _
+
+
+# ---------------------------------------------------
+# slide 23
+# ---------------------------------------------------
+* Criando UI a partir de componentes #2/3
+
+Pense um pouco e descreva como esta tela pode ser componentizada:
+
+.image ./res/screen1.jpeg 500 _
+
+
+# ---------------------------------------------------
+# slide 24
+# ---------------------------------------------------
+* Criando UI a partir de componentes #3/3
+
+Pense um pouco e descreva como esta tela pode ser componentizada:
+
+.image ./res/screen3.png 500 _
+
+
+# ---------------------------------------------------
+# slide 25
+# ---------------------------------------------------
+* Critérios para componentização #1/2
+
+Quais dos critérios abaixo você usou para definir os componentes das telas anteriores?
+
+- reuso no projeto
+- reuso nos próximos projeto
+- simplificar a construção
+- dividir o projeto
+- códigos já existentes (libs, por exemplo)
+
+
+# ---------------------------------------------------
+# slide 26
+# ---------------------------------------------------
+* Critérios para componentização #2/2
+
+Na dúvida, não componentize!
+
+.image ./res/ah-nao-ironico.gif 300 _
+
+.html q2.html
+
+
+# ---------------------------------------------------
+# slide 27
+# ---------------------------------------------------
+* Web component #1/2
+
+- os componentes da web são um conjunto de regras de tecnologia para a construção de um site que são empacotados (separados do resto do código do aplicativo) e reutilizáveis.
+- os componentes da web fornecem empacotamentos para reutilizar comportamentos, estilos, estados, propriedades e ciclo de vida.
+- alguns componentes da web geralmente exibem algumas APIs obrigatórias como componentes de vídeo da web podem exibir as funções _play()_ e _pause()_.
+
+.image ./res/comps4.png 200 _
+
+Fonte: https://www.theseus.fi/bitstream/handle/10024/342721/Phan_Hong_Duc.pdf?sequence=2
+
+
+
+# ---------------------------------------------------
+# slide 28
+# ---------------------------------------------------
+* Web component #2/2
+
+- desenvolver um produto web baseado em componentização da UI requer um esforço inicial de planejamento e entendimento sobre que elementos deverão ser ou compor um componente;
+- sem esse planejamento a vantagem de utilizar componentização pode ser perdida ou até impactar negativamente no projeto;
+- se é uma simples página de site que não possua complexidade visual, não há justificativa para usar um framework como React;
+- por um outro lado, o que se gasta em tempo com planejamento e melhor entendimento do projeto ganha-se velocidade de produção após todos os componentes terem sidos desenvolvidos;
+
+
+# ---------------------------------------------------
+# slide 29
+# ---------------------------------------------------
+* Programação com React
+
+# ---------------------------------------------------
+# slide 30
+# ---------------------------------------------------
+* Preparação...
+
+- acessem o site: https://codesandbox.io
+
+.image ./res/codesandbox.png 500 _
+
+
+# ---------------------------------------------------
+# slide 31
+# ---------------------------------------------------
+* Primeiros passos...
+
+1. defina quais são os componentes desta tela
+2. defina como será o layout desta tela
+3. crie cada um dos componentes previamente
+4. monte a tela
+5. monte o comportamento da tela
+6. estilize a tela (a seu gosto)
+
+.image ./res/task1.png 300 _
+
+
+# ---------------------------------------------------
+# slide 32
+# ---------------------------------------------------
+* Segundo aplicativo (tarefa de 30min):
+
+- siga os mesmos passos da atividades anterior
+- siga os requisitos abaixo:
+
+ 1) ao clicar no checkbox o o texto mudará de cor para azul e o botão "remove" some
+ 2) ao clicar no botão remove o linha inteira some
+ 3) ao cliente em "add" o texto digitado será adicionado na tabela
+ 4) ao cliente em "add", caso não tenha texto no campo um alerta deverá ser exibido
+ 5) estilize a seu gosto a página
+
+.image ./res/task2.png 300 _
+
+
+# ---------------------------------------------------
+# slide 33
+# ---------------------------------------------------
+* Trabalhando com layouts (tarefa de 30min):
+
+- siga os mesmos passos da primeira atividade
+- considerando o layout a seguir, crie os elementos que o compoem e adicione uma cor de background para cada elemento (side, top, footer e content)
+
+.image ./res/task3.png 400 _
+
+
+# ---------------------------------------------------
+# slide 34
+# ---------------------------------------------------
+* React para Mobile
+
+# ---------------------------------------------------
+# slide 35
+# ---------------------------------------------------
+* React para Mobile
+
+- Todo o conhecimento utilizados para produzir páginas web usando React podem ser utilizados para produção de aplicativos;
+- Apesar do conhecimento ser reaproveitado, devido questões tecnológicas, o React possui uma versão própria para desenvolvimento de aplicativos para smartphone e iphone;
+- O nome do framework do React para desenvolvimento de aplicações para mobile é React Native;
+- Possui Tags (componentes) próprios;
+- O termo nativo vem do fato que o React pode interagir nativamente com o dispostivo;
+
+# ---------------------------------------------------
+# slide 36
+# ---------------------------------------------------
+* ReactNative
+
+- fornece um conjunto básico de componentes nativos independentes de plataforma, como:
+
+  - View
+  - Text
+  - Image
+  - Button
+  - ScrollView
+
+- Este componentes são mapados diretamente para os blocos de construção dos elementos UI nativos da plataforma (Android ou iOS)
+
+.image ./res/rn1.png 350 _
+
+# ---------------------------------------------------
+# slide 37
+# ---------------------------------------------------
+* ReactNative
+
+- para compilar e testar os códigos em uma plataforma específica é necessário ter o SDK da plataforma;
+- para compilar para Android é necessário ter o Android Studio
+
+.image ./res/android-studio.png 150 _
+
+- para compilar para iPhone é necessário ter o Xcode
+
+.image ./res/xcode.jpeg 150 _
+
+# ---------------------------------------------------
+# slide 38
+# ---------------------------------------------------
+* Instalação do ReactNative para Android
+
+# ---------------------------------------------------
+# slide 39
+# ---------------------------------------------------
+* Instalação do ReactNative para Android #1/2
+
+Antes de começar:
+
+- você precisa de nodejs e npm instalado:
+  
+`https://nodejs.org/en/`
+
+- instalação do android-studio:
+    
+`https://developer.android.com/studio/`
+
+- apontamento das variáveis de ambiente:
+
+`https://www.youtube.com/watch?v=wnkynX7Yreo`
+
+
+Outros links:
+
+- AndroidStudio para W10: https://www.youtube.com/watch?v=0zx_eFyHRU0
+- Nodejs no Windows: https://www.youtube.com/watch?v=-cLzUD0TQY0
+
+# ---------------------------------------------------
+# slide 40
+# ---------------------------------------------------
+* Instalação do ReactNative para Android #2/2
+
+Instruções para instalação do ReactNative:
+
+    https://reactnative.dev/docs/environment-setup
+
+
+Teste de funcionamento:
+
+    npx react-native --version
+
+Criando uma aplicação:
+
+    npx react-native init MeuApp
+
+
+# ---------------------------------------------------
+# slide 40
+# ---------------------------------------------------
+* Visão Geral sobre React Native
+
+# ---------------------------------------------------
+# slide 41
+# ---------------------------------------------------
+* Alguns elementos visuais #1/2
+
+Um exemplo de mapeamento entre componentes React e Nativos:
+
+.image ./res/views.png 500 _
+
+# ---------------------------------------------------
+# slide 42
+# ---------------------------------------------------
+* Alguns elementos visuais #2/2
+
+"_Como_o_React_Native_usa_a_mesma_estrutura_de_API_dos_componentes_React_você_precisa_entender_as_APIs_do_componente_React_para_começar_"
+
+.link https://reactnative.dev/docs/intro-react-native-components (ReactNative, 2021)
+
+.image ./res/rn-react.png 450 _
+
+# ---------------------------------------------------
+# slide 43
+# ---------------------------------------------------
+* Exemplo de código
+
+.iframe https://snack.expo.io/k8GtoeVKy 600 1000
+
+# ---------------------------------------------------
+# slide 44
+# ---------------------------------------------------
+* Estilização e Layout flex #1/3
+
+- o ReactNative (RN) estiliza seus componentes utilizando *StyleSheet*
+- como um componente cresce em complexidade, o StyleSheet pode ser utilizado para criar vários estilos
+- Exemplo:
+
+  const styles = StyleSheet.create({
+    container: {
+      marginTop: 50,
+    },
+    bigBlue: {
+      color: 'blue',
+      fontWeight: 'bold',
+      fontSize: 30,
+    },
+    red: {
+      color: 'red',
+    },
+  });
+
+# ---------------------------------------------------
+# slide 45
+# ---------------------------------------------------
+* Estilização e Layout flex #2/3
+
+- apesar da similaridade, em alguns casos a estilização de componentes para mobile é diferente da web
+
+.link https://github.com/facebook/react-native/issues/29308#issuecomment-792864162 (ReactNative Issues)
+
+- a dimensionalidade dos componentes podem ser *fixas* ou *flexíveis* (flex)
+
+- é recomendável deixar seu layout flexível e utilizar as regras de flexbox contidas no site https://reactnative.dev/docs/flexbox
+
+.link https://reactnative.dev/docs/flexbox (RN FlexBox)
+
+- o posicionamento dos componentes podem ser relativo (default) ou absoluto (uso apenas em casos absolutamente necessários)
+
+.link https://medium.com/wix-engineering/the-full-react-native-layout-cheat-sheet-a4147802405c (Mais sobre FlexBox)
+
+
+# ---------------------------------------------------
+# slide 46
+# ---------------------------------------------------
+* Estilização e Layout flex #3/3
+
+- a separação de conteúdos pode ser pensada utilizando-se apenas flexbox
+
+.image ./res/flexbox.png 250 _
+
+- o uso de imagens deve conter sempre a sua altura e largura fixa
+
+- para usar imagens de background é recomendado o uso de *ImageBackground*
+
+  <ImageBackground source={...} style={{width: '100%', height: '100%'}}>
+    <Text>Inside</Text>
+  </ImageBackground>
+
+
+# ---------------------------------------------------
+# slide 47
+# ---------------------------------------------------
+* Navegação entre Telas #1/2
+
+- aplicativos móveis raramente são compostos por uma única tela, sendo necessário entender como navegar entre telas
+
+- o gerenciamento da apresentação e da transição entre várias telas é normalmente feito por um *navegador*
+
+- os padrões de navegação no mobile diferem da web e quase nunca serão realizados na mesma maneira
+
+- algumas plataformas fornecem experiências próprias de navegação (iOS não possui um botão de retorno, por exemplo)
+
+- um dos meios de se obter transparência sobre a navegação  *react-native-navigation*
+
+# ---------------------------------------------------
+# slide 48
+# ---------------------------------------------------
+* Navegação entre Telas #2/2
+
+Atualmente o *react-native-navigation* fornece 3 meios de navegação:
+
+- tab: navegação baseada em abas
+- stack: navegação baseada em empilhamento de telas
+- drawer: navegação baseada em engavetamento de telas
+- switch: _não_mais_suportado_
+
+.image ./res/nav.gif 280 _
+
+
+# ---------------------------------------------------
+# slide 49
+# ---------------------------------------------------
+* Organização do Projeto
+
+A organização dos códigos para o framework depende do próprio framework, no entanto a organização dos códigos de desenvolvimento (componentes, telas, recursos estáticos, etc) dependem do desenvolvedor. É sobre esta organização que estamos trantando neste ponto!
+
+Existem guias de boas práticas exclusivos para React e outros para JavaScript.
+
+O fato é que o uso de qualquer um desses guias ajuda a você ser desenvolvedor melhor!
+
+Alguns guias para dar uma olhada:
+
+- https://airbnb.io/javascript/react/
+- https://airbnb.io/native-navigation/docs/guides/project-structure.html 
+- https://www.reactnative.guide/6-conventions-and-code-style/6.1-eslint.html
+- https://www.reactnative.guide/5-project-structure-and-start-building-some-app/5.0-intro.html
+
+
+# ---------------------------------------------------
+# slide 45
+# ---------------------------------------------------
+* Demo 1: Primeira tela
+
+.image ./res/screen1.png 500 _ 
+
+# ---------------------------------------------------
+# slide 45
+# ---------------------------------------------------
+* Demo 2: Adicionando uma segunda tela
+
+.image ./res/screen4.png 500 _ 
+
+# ---------------------------------------------------
+# slide 46
+# ---------------------------------------------------
+* Demo 3: Navegando entre telas
+
+.image ./res/screen5.png 500 _ 
+
+
