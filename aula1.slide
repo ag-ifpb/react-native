@@ -1,5 +1,5 @@
 ReactNative
-Programação para dispositivos móveis usando React
+Programação para dispositivos móveis usando React (parte 1)
 09:00 10 Apr 2021
 Tags: mobile, react-native, react
 
@@ -542,7 +542,8 @@ Um exemplo de mapeamento entre componentes React e Nativos:
 # ---------------------------------------------------
 * Exemplo de código
 
-.iframe https://snack.expo.io/k8GtoeVKy 600 1000
+# .iframe https://snack.expo.io/k8GtoeVKy 600 800
+.image ./res/expo.png 520 _
 
 # ---------------------------------------------------
 # slide 44

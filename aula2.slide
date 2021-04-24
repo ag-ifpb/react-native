@@ -1,0 +1,290 @@
+ReactNative
+Programação para dispositivos móveis usando React (parte 2)
+08:00 24 Apr 2021
+Tags: mobile, react-native, react
+
+Autor Ari Garcia
+aristofanio@hotmail.com
+https://www.linkedin.com/in/aristofanio
+
+# ---------------------------------------------------
+# slide 2
+# ---------------------------------------------------
+* Agenda
+- Lembrando os últimos momentos da aula passada (10min)
+- Construindo o primeiro app (10min)
+- Desenvolvendo o Demo 1 (1h)
+- Frameworks e libs que podem ajudar (20min)
+- Desenvolvendo o Demo 2 com Styled-Component (1h)
+- Navegação entre Telas (20min)
+- Desenvolvendo o Demo 3 com Navigation (1h)
+
+# ---------------------------------------------------
+# slide 3
+# ---------------------------------------------------
+* Visão Geral sobre React Native
+
+# ---------------------------------------------------
+# slide 4
+# ---------------------------------------------------
+* Instalação do ReactNative para Android
+
+Instruções para instalação do ReactNative:
+
+    https://reactnative.dev/docs/environment-setup
+
+
+Teste de funcionamento:
+
+    npx react-native --version
+
+Criando uma aplicação:
+
+    npx react-native init MeuApp
+
+# ---------------------------------------------------
+# slide 5
+# ---------------------------------------------------
+* Alguns elementos visuais #1/2
+
+Um exemplo de mapeamento entre componentes React e Nativos:
+
+.image ./res/views.png 500 _
+
+# ---------------------------------------------------
+# slide 6
+# ---------------------------------------------------
+* Alguns elementos visuais #2/2
+
+"_Como_o_React_Native_usa_a_mesma_estrutura_de_API_dos_componentes_React_você_precisa_entender_as_APIs_do_componente_React_para_começar_"
+
+.link https://reactnative.dev/docs/intro-react-native-components (ReactNative, 2021)
+
+.image ./res/rn-react.png 450 _
+
+# ---------------------------------------------------
+# slide 7
+# ---------------------------------------------------
+* Exemplo de código
+
+# .iframe https://snack.expo.io/k8GtoeVKy 600 800
+.image ./res/expo.png 520 _
+- Expo Demo 
+.link https://snack.expo.io/0BiyeZdzC (Expo Demo)
+- Limitações da Expo
+.link https://www.facebook.com/rocketseat/videos/309855983462989 (Rockeset)
+
+# ---------------------------------------------------
+# slide 8
+# ---------------------------------------------------
+* Estilização e Layout flex #1/3
+
+- o ReactNative (RN) estiliza seus componentes utilizando *StyleSheet*
+- como um componente cresce em complexidade, o StyleSheet pode ser utilizado para criar vários estilos
+- Exemplo:
+
+  const styles = StyleSheet.create({
+    container: {
+      marginTop: 50,
+    },
+    bigBlue: {
+      color: 'blue',
+      fontWeight: 'bold',
+      fontSize: 30,
+    },
+    red: {
+      color: 'red',
+    },
+  });
+
+# ---------------------------------------------------
+# slide 9
+# ---------------------------------------------------
+* Estilização e Layout flex #2/3
+
+- apesar da similaridade, em alguns casos a estilização de componentes para mobile é diferente da web
+
+.link https://github.com/facebook/react-native/issues/29308#issuecomment-792864162 (ReactNative Issues)
+
+- a dimensionalidade dos componentes podem ser *fixas* ou *flexíveis* (flex)
+
+- é recomendável deixar seu layout flexível e utilizar as regras de flexbox contidas no site https://reactnative.dev/docs/flexbox
+
+.link https://reactnative.dev/docs/flexbox (RN FlexBox)
+
+- o posicionamento dos componentes podem ser relativo (default) ou absoluto (uso apenas em casos absolutamente necessários)
+
+.link https://medium.com/wix-engineering/the-full-react-native-layout-cheat-sheet-a4147802405c (Mais sobre FlexBox)
+
+
+# ---------------------------------------------------
+# slide 10
+# ---------------------------------------------------
+* Estilização e Layout flex #3/3
+
+- a separação de conteúdos pode ser pensada utilizando-se apenas flexbox
+
+.image ./res/flexbox.png 250 _
+
+- o uso de imagens deve conter sempre a sua altura e largura fixa
+
+- para usar imagens de background é recomendado o uso de *ImageBackground*
+
+  <ImageBackground source={...} style={{width: '100%', height: '100%'}}>
+    <Text>Inside</Text>
+  </ImageBackground>
+
+
+# ---------------------------------------------------
+# slide 11
+# ---------------------------------------------------
+* Navegação entre Telas #1/2
+
+- aplicativos móveis raramente são compostos por uma única tela, sendo necessário entender como navegar entre telas
+
+- o gerenciamento da apresentação e da transição entre várias telas é normalmente feito por um *navegador*
+
+- os padrões de navegação no mobile diferem da web e quase nunca serão realizados na mesma maneira
+
+- algumas plataformas fornecem experiências próprias de navegação (iOS não possui um botão de retorno, por exemplo)
+
+- um dos meios de se obter transparência sobre a navegação  *react-native-navigation*
+
+# ---------------------------------------------------
+# slide 12
+# ---------------------------------------------------
+* Navegação entre Telas #2/2
+
+Atualmente o *react-native-navigation* fornece 3 meios de navegação:
+
+- tab: navegação baseada em abas
+- stack: navegação baseada em empilhamento de telas
+- drawer: navegação baseada em engavetamento de telas
+- switch: _não_mais_suportado_
+
+.image ./res/nav.gif 280 _
+
+
+# ---------------------------------------------------
+# slide 13
+# ---------------------------------------------------
+* Organização do Projeto
+
+A organização dos códigos para o framework depende do próprio framework, no entanto a organização dos códigos de desenvolvimento (componentes, telas, recursos estáticos, etc) dependem do desenvolvedor. É sobre esta organização que estamos trantando neste ponto!
+
+Existem guias de boas práticas exclusivos para React e outros para JavaScript.
+
+O fato é que o uso de qualquer um desses guias ajuda a você ser desenvolvedor melhor!
+
+Alguns guias para dar uma olhada:
+
+- https://airbnb.io/javascript/react/
+- https://airbnb.io/native-navigation/docs/guides/project-structure.html 
+- https://www.reactnative.guide/6-conventions-and-code-style/6.1-eslint.html
+- https://www.reactnative.guide/5-project-structure-and-start-building-some-app/5.0-intro.html
+
+
+# ---------------------------------------------------
+# slide 14
+# ---------------------------------------------------
+* Lembre-se dos Passos:
+
+1. defina quais são os componentes desta tela
+2. defina como será o layout desta tela
+3. crie cada um dos componentes previamente
+4. monte a tela
+5. monte o comportamento da tela
+6. estilize a tela (a seu gosto)
+
+# ---------------------------------------------------
+# slide 14
+# ---------------------------------------------------
+* Demo 1: Primeira tela #1/1
+
+.image ./res/screen1.png 500 _ 
+
+# ---------------------------------------------------
+# slide 15
+# ---------------------------------------------------
+* Demo 1: Lições Aprendidas
+
+- lembrar que bugs existem!
+- as versões dos emuladores mais antigos (de 4 anos atrás) pode não estar adequada para tecnologias atuais, logo mantenha seu ambiente de desenvolvimento compatível com seu ambiente de produção
+
+# ---------------------------------------------------
+# slide 16
+# ---------------------------------------------------
+* Frameworks e libs que podem ajudar #1/2
+
+- React Native Elements: possui uma diversidade de componentes criados para extender as funcionalidades dos elementos já existentes
+.link https://reactnativeelements.com (site)
+- Bootstrap: uma adaptação da lib mais famosa para RN
+.link https://www.npmjs.com/package/react-native-bootstrap-styles (site)
+- UI Kitten: diversos componentes visuais já estilizados
+.link https://akveo.github.io/react-native-ui-kitten (site)
+- Paper: componentes que usam Material Design
+.link https://reactnativepaper.com (site)
+- Styled Components: mantém o conhecimento de estilização web
+.link https://styled-components.com (site)
+
+# ---------------------------------------------------
+# slide 17
+# ---------------------------------------------------
+* Frameworks e libs que podem ajudar #2/2
+
+- Navigation: componentes que ajudam a organizar a navegação
+.link https://reactnavigation.org/docs/getting-started/ (site)
+- Redux: ajudam a controlar, organizar e manter o estado de componentes e da aplicação
+.link https://redux.js.org (site principal)
+.link https://www.digitalocean.com/community/tutorials/react-react-native-redux (site tutorial da DigitalOcean)
+
+# ---------------------------------------------------
+# slide 18
+# ---------------------------------------------------
+* Demo 2: Adicionando uma segunda tela
+
+.image ./res/screen4.png 500 _ 
+
+# ---------------------------------------------------
+# slide 19
+# ---------------------------------------------------
+* Demo 2: Lições Aprendidas
+
+- (reflexão com os alunos)
+
+# ---------------------------------------------------
+# slide 20
+# ---------------------------------------------------
+* Navegação entre Telas #1/2
+
+.image ./res/routes.jpg 500 _ 
+
+# ---------------------------------------------------
+# slide 21
+# ---------------------------------------------------
+* Navegação entre Telas #2/2
+
+- Switch
+- {Top|Bottom}Bar
+- Stack
+
+# ---------------------------------------------------
+# slide 18
+# ---------------------------------------------------
+* Demo 3: Navegando entre telas
+
+.image ./res/screen5.png 500 _ 
+
+# ---------------------------------------------------
+# slide 19
+# ---------------------------------------------------
+* Demo 3: Lições Aprendidas
+
+- (reflexão com os alunos)
+
+# ---------------------------------------------------
+# slide 20
+# ---------------------------------------------------
+* Alguns links gerados durante a aula
+
+.link https://drive.google.com/drive/folders/1FL8xsy8nIgxoncC4_yNMm2WJaZ3w0R2I?usp=sharing Componentização das Telas de Demonstração
